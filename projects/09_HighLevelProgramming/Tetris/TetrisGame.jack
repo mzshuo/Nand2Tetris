@@ -1,0 +1,136 @@
+class TetrisGame {
+    field Sprite currSprite;
+    field Random random;
+
+    /** Constructs a new Tetris Game. */
+    constructor TetrisGame new() {
+        let random = Random.new();
+        return this;
+    }
+
+    /** Disposes this game. */
+    method void dispose() {
+        do random.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Runs the game: handles the user's inputs and moves the square accordingly */
+    method void run() {
+        var int time;
+        var boolean exit;
+        var char key;
+        var boolean atBottom;
+        var int upY;
+
+        var int row, row2, i, j, mem;
+        var boolean full, white;
+        var int x1, y1, x2, y2, mem1, mem2, value;
+        var Square s1;
+
+        /* Draws the boundary. */
+        do Screen.clearScreen();
+        do Boundary.draw();
+        
+        let exit = false;
+        while (~exit) {
+            /* Drops a new sprite from the top of the screen. */
+            let currSprite = Sprite.new(random.randomValue(), 1);
+            let atBottom = false;
+
+            let time = 0;
+            while (~atBottom) {
+                let key = Keyboard.keyPressed();
+                if (key = 81)  { let exit = true; let atBottom = true; do endGame(); }    // q key
+                if (key = 131) {        // up arrow                       
+                    do currSprite.rotate(); 
+                    while (key = 131) { let key = Keyboard.keyPressed(); }  // waits until the key is unpressed.
+                }              
+                if (key = 133) {        // down arrow
+                    let atBottom = currSprite.moveDown(); 
+                    while (key = 133) { let key = Keyboard.keyPressed(); }
+                }            
+                if (key = 130) {        // left arrow
+                    do currSprite.moveLeft(); 
+                    while (key = 130) { let key = Keyboard.keyPressed(); }
+                }            
+                if (key = 132) {      // right arrow
+                    do currSprite.moveRight();
+                    while (key = 132) { let key = Keyboard.keyPressed(); } 
+                }       
+
+                let time = time + 1;
+                if (time = 20000) {
+                    let time = 0;
+                    let atBottom = currSprite.moveDown();
+                }
+            }
+
+            /* Arrived at the bottom */
+            let upY = currSprite.smallestY();
+            do currSprite.dispose();
+            if (upY < (Const.getBias() + 16 * 3)) {
+                do endGame();
+                let exit = true;
+            }
+
+            /* Check if there is a full line. */
+            let row = 0;
+            while (row < 15) {
+                let i = 0;
+                let full = true;
+                while (full & (i < 12)) {
+                    let x1 = Const.getLeftBoundary() + (i * 16) + 1;
+                    let y1 = Const.getDownBoundary() - 16 - (16 * row);
+                    let s1 = Square.new(x1, y1);
+                    let full = s1.isBlack() & full;
+                    let i = i + 1;
+                }
+                /* Eliminate a line. */
+                if (full) {
+                    if (row = 14) {do endGame(); let exit = true; }
+                    else {
+                        let row2 = row;
+                        let white = false;
+                        while (~(white) & (row2 < 14)) {
+                            let i = 0;
+                            let white = true;
+                            while (i < 12) {
+                                let x1 = Const.getLeftBoundary() + (i * 16) + 1;
+                                let x2 = x1;
+                                let j = 0;
+                                while (j < 16) {
+                                    let y1 = Const.getDownBoundary() - 16 - (16 * row2) + j;
+                                    let y2 = y1 - 16;
+                                    let mem1 = 16384 + (y1 * 32) + (x1 / 16);
+                                    let mem2 = 16384 + (y2 * 32) + (x2 / 16);
+
+                                    // do Memory.poke(mem1, Memory.peek(mem2));
+                                    let value = Memory.peek(mem2);
+
+                                    if (~(value = 0)) { do Memory.poke(mem1, value); let white = false;}
+                                    else { do Memory.poke(mem1, 0); }
+
+                                    let j = j + 1;
+                                }
+                                let i = i + 1;
+                            }
+                            let row2 = row2 + 1;
+                        }
+                    }
+                }
+                else { let row = row + 1; }
+            }
+        }
+        return;
+    }
+
+    /** Ends a game. */
+    method void endGame() {
+        var String endLine;
+        let endLine = "Game Over!";
+        do Output.moveCursor(11, 27);
+        do Output.printString(endLine);
+        return;
+    }
+}

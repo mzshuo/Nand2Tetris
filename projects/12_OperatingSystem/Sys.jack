@@ -1,0 +1,65 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Sys.jack
+
+/**
+ * A library that supports various program execution services.
+ */
+class Sys {
+
+    /** Performs all the initializations required by the OS. */
+    function void init() {
+        do Memory.init();       // should be the first one to initialize
+        do Math.init();
+        do Screen.init();
+        do Keyboard.init();
+        do Output.init();
+
+        do Main.main();
+        do Sys.halt();
+        return;
+    }
+
+    /** Halts the program execution. */
+    function void halt() {
+        while (true) {}
+        return;
+    }
+
+    /** Waits approximately duration milliseconds and returns.  */
+    function void wait(int duration) {
+        var int loop1, loop2;
+        while (duration > 0) {
+            let loop2 = 300;
+            while (loop2 > 0) { let loop2 = loop2 - 1; }
+            let duration = duration - 1;
+        }
+        return;
+    }
+
+    /** Displays the given error code in the form "ERR<errorCode>",
+     *  and halts the program's execution. */
+    function void error(int errorCode) {
+        var String error, code;
+        var int i;
+
+        let error = String.new(10);
+        do error.appendChar(69);    // the character code of 'E'
+        do error.appendChar(82);    // the character code of 'R'
+        do error.appendChar(82);    // the character code of 'R'
+        do error.appendChar(60);    // the character code of '<'
+        let code = String.int2String(errorCode);
+
+        let i = 0;
+        while (i < code.length()) {
+            do error.appendChar(code.charAt(i));
+            let i = i + 1;
+        }
+        do error.appendChar(62);    // the character code of '>'
+
+        do Output.printString(error);
+        do Sys.halt();
+        return;
+    }
+}

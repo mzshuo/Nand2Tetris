@@ -1,0 +1,69 @@
+/** Implements a graphical square. */
+class Square {
+    field int x, y;         // screen location of the square's top-left corner
+    
+    /** Constructs a new square with a given location. */
+    constructor Square new(int Ax, int Ay) {
+        let x = Ax;
+        let y = Ay;
+        return this;
+    }
+
+    /** Disposes this square. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Set the x and y coordinators. */
+    method void setPosition(int Ax, int Ay) {
+        let x = Ax;
+        let y = Ay;
+        return;
+    }
+
+    /** Draws the square on the screen. */
+    method void draw() {
+        var int location, memAddress, currAddress;
+        let location = (y * 32) + (x / 16);        // notes: let location = (y*512+x)/16 causes a overflow.
+        let memAddress = 16384 + location;
+        let currAddress = memAddress;
+
+        do Memory.poke(currAddress, 0);
+        let currAddress = currAddress + 32;
+
+        while (currAddress < (memAddress + 480)) {
+            do Memory.poke(currAddress, 32766);
+            let currAddress = currAddress + 32;
+        }
+
+        do Memory.poke(currAddress, 0);
+        return;
+    }
+
+    /** Erase the square from the screen. */
+    method void erase() {
+        var int location, memAddress, currAddress;
+        let location = (y * 32) + (x / 16);
+        let memAddress = 16384 + location;
+        let currAddress = memAddress;
+        while (currAddress < (memAddress + 480 + 32)) {
+            do Memory.poke(currAddress, 0);
+            let currAddress = currAddress + 32;
+        }
+        return;
+    }
+
+    method int getX() { return x; }
+
+    method int getY() { return y; }
+
+    method boolean isBlack() {
+        var int location, memAddress;
+        let location = ((y + 2) * 32) + ((x + 2) / 16); 
+        let memAddress = 16384 + location;
+        if (Memory.peek(memAddress) = 0) {return false;}
+        else {return true;}
+    }
+    
+}

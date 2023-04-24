@@ -1,0 +1,36 @@
+/** Aims to generate random values. */
+class Random {
+    static int f1, f2;
+
+    /** Initialization */
+    constructor Random new() {
+        let f1 = 0;
+        let f2 = 1;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    
+    /** Fibnacci */
+    method int randomValue() {
+        var int sum;
+        let sum = f1 + f2;
+        let f1 = f2;
+        let f2 = sum;
+        if (sum > 20000) {
+            let f1 = 0;
+            let f2 = 1;
+        }
+        return Random.mod7(sum);
+    }
+
+    function int mod7(int x) {
+        while (x > 6) {
+            let x = x - 7;
+        }
+        return x;
+    }
+}

@@ -1,0 +1,422 @@
+function TetrisGame.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+call Random.new 0
+pop this 1
+push pointer 0
+return
+function TetrisGame.dispose 0
+push argument 0
+pop pointer 0
+push this 1
+call Random.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function TetrisGame.run 20
+push argument 0
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+call Boundary.draw 0
+pop temp 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+not
+not
+if-goto WHILE_END0
+push this 1
+call Random.randomValue 1
+push constant 1
+call Sprite.new 2
+pop this 0
+push constant 0
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 3
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 2
+push local 2
+push constant 81
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 1
+push constant 0
+not
+pop local 3
+push pointer 0
+call TetrisGame.endGame 1
+pop temp 0
+label IF_FALSE0
+push local 2
+push constant 131
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+call Sprite.rotate 1
+pop temp 0
+label WHILE_EXP2
+push local 2
+push constant 131
+eq
+not
+if-goto WHILE_END2
+call Keyboard.keyPressed 0
+pop local 2
+goto WHILE_EXP2
+label WHILE_END2
+label IF_FALSE1
+push local 2
+push constant 133
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+call Sprite.moveDown 1
+pop local 3
+label WHILE_EXP3
+push local 2
+push constant 133
+eq
+not
+if-goto WHILE_END3
+call Keyboard.keyPressed 0
+pop local 2
+goto WHILE_EXP3
+label WHILE_END3
+label IF_FALSE2
+push local 2
+push constant 130
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 0
+call Sprite.moveLeft 1
+pop temp 0
+label WHILE_EXP4
+push local 2
+push constant 130
+eq
+not
+if-goto WHILE_END4
+call Keyboard.keyPressed 0
+pop local 2
+goto WHILE_EXP4
+label WHILE_END4
+label IF_FALSE3
+push local 2
+push constant 132
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 0
+call Sprite.moveRight 1
+pop temp 0
+label WHILE_EXP5
+push local 2
+push constant 132
+eq
+not
+if-goto WHILE_END5
+call Keyboard.keyPressed 0
+pop local 2
+goto WHILE_EXP5
+label WHILE_END5
+label IF_FALSE4
+push local 0
+push constant 1
+add
+pop local 0
+push local 0
+push constant 20000
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+pop local 0
+push this 0
+call Sprite.moveDown 1
+pop local 3
+label IF_FALSE5
+goto WHILE_EXP1
+label WHILE_END1
+push this 0
+call Sprite.smallestY 1
+pop local 4
+push this 0
+call Sprite.dispose 1
+pop temp 0
+push local 4
+call Const.getBias 0
+push constant 16
+add
+push constant 3
+call Math.multiply 2
+lt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push pointer 0
+call TetrisGame.endGame 1
+pop temp 0
+push constant 0
+not
+pop local 1
+label IF_FALSE6
+push constant 0
+pop local 5
+label WHILE_EXP6
+push local 5
+push constant 15
+lt
+not
+if-goto WHILE_END6
+push constant 0
+pop local 7
+push constant 0
+not
+pop local 10
+label WHILE_EXP7
+push local 10
+push local 7
+push constant 12
+lt
+and
+not
+if-goto WHILE_END7
+call Const.getLeftBoundary 0
+push local 7
+push constant 16
+call Math.multiply 2
+add
+push constant 1
+add
+pop local 12
+call Const.getDownBoundary 0
+push constant 16
+sub
+push constant 16
+push local 5
+call Math.multiply 2
+sub
+pop local 13
+push local 12
+push local 13
+call Square.new 2
+pop local 19
+push local 19
+call Square.isBlack 1
+push local 10
+and
+pop local 10
+push local 7
+push constant 1
+add
+pop local 7
+goto WHILE_EXP7
+label WHILE_END7
+push local 10
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push local 5
+push constant 14
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push pointer 0
+call TetrisGame.endGame 1
+pop temp 0
+push constant 0
+not
+pop local 1
+goto IF_END8
+label IF_FALSE8
+push local 5
+pop local 6
+push constant 0
+pop local 11
+label WHILE_EXP8
+push local 11
+not
+push local 6
+push constant 14
+lt
+and
+not
+if-goto WHILE_END8
+push constant 0
+pop local 7
+push constant 0
+not
+pop local 11
+label WHILE_EXP9
+push local 7
+push constant 12
+lt
+not
+if-goto WHILE_END9
+call Const.getLeftBoundary 0
+push local 7
+push constant 16
+call Math.multiply 2
+add
+push constant 1
+add
+pop local 12
+push local 12
+pop local 14
+push constant 0
+pop local 8
+label WHILE_EXP10
+push local 8
+push constant 16
+lt
+not
+if-goto WHILE_END10
+call Const.getDownBoundary 0
+push constant 16
+sub
+push constant 16
+push local 6
+call Math.multiply 2
+sub
+push local 8
+add
+pop local 13
+push local 13
+push constant 16
+sub
+pop local 15
+push constant 16384
+push local 13
+push constant 32
+call Math.multiply 2
+add
+push local 12
+push constant 16
+call Math.divide 2
+add
+pop local 16
+push constant 16384
+push local 15
+push constant 32
+call Math.multiply 2
+add
+push local 14
+push constant 16
+call Math.divide 2
+add
+pop local 17
+push local 17
+call Memory.peek 1
+pop local 18
+push local 18
+push constant 0
+eq
+not
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push local 16
+push local 18
+call Memory.poke 2
+pop temp 0
+push constant 0
+pop local 11
+goto IF_END9
+label IF_FALSE9
+push local 16
+push constant 0
+call Memory.poke 2
+pop temp 0
+label IF_END9
+push local 8
+push constant 1
+add
+pop local 8
+goto WHILE_EXP10
+label WHILE_END10
+push local 7
+push constant 1
+add
+pop local 7
+goto WHILE_EXP9
+label WHILE_END9
+push local 6
+push constant 1
+add
+pop local 6
+goto WHILE_EXP8
+label WHILE_END8
+label IF_END8
+goto IF_END7
+label IF_FALSE7
+push local 5
+push constant 1
+add
+pop local 5
+label IF_END7
+goto WHILE_EXP6
+label WHILE_END6
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function TetrisGame.endGame 1
+push argument 0
+pop pointer 0
+push constant 10
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+pop local 0
+push constant 11
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+push local 0
+call Output.printString 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,60 @@
+function Const.getBoundaryWidth 0
+push constant 6
+return
+function Const.getNumSquaresPerRow 0
+push constant 12
+return
+function Const.getLeftBoundary 2
+call Const.getNumSquaresPerRow 0
+pop local 0
+push constant 512
+push constant 16
+push local 0
+call Math.multiply 2
+sub
+push constant 2
+sub
+push constant 2
+call Math.divide 2
+pop local 1
+push local 1
+push constant 1
+add
+return
+function Const.getRightBoundary 2
+call Const.getNumSquaresPerRow 0
+pop local 0
+call Const.getLeftBoundary 0
+push constant 16
+push local 0
+call Math.multiply 2
+add
+push constant 1
+add
+pop local 1
+push local 1
+return
+function Const.getDownBoundary 1
+push constant 255
+call Const.getBoundaryWidth 0
+sub
+push constant 1
+sub
+pop local 0
+push local 0
+return
+function Const.getBias 2
+call Const.getBoundaryWidth 0
+pop local 1
+push constant 256
+push local 1
+sub
+push constant 1
+sub
+push constant 15
+push constant 16
+call Math.multiply 2
+sub
+pop local 0
+push local 0
+return

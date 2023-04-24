@@ -1,0 +1,194 @@
+
+function SquareGame.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+push constant 0
+push constant 30
+call Square.new 3
+pop this 0
+push constant 0
+pop this 1
+push pointer 0
+return
+
+function SquareGame.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Square.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+
+function SquareGame.moveSquare 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+eq
+not
+if-goto ELSE_0
+push this 0
+call Square.moveUp 1
+pop temp 0
+goto END_0
+label ELSE_0
+label END_0
+push this 1
+push constant 2
+eq
+not
+if-goto ELSE_1
+push this 0
+call Square.moveDown 1
+pop temp 0
+goto END_1
+label ELSE_1
+label END_1
+push this 1
+push constant 3
+eq
+not
+if-goto ELSE_2
+push this 0
+call Square.moveLeft 1
+pop temp 0
+goto END_2
+label ELSE_2
+label END_2
+push this 1
+push constant 4
+eq
+not
+if-goto ELSE_3
+push this 0
+call Square.moveRight 1
+pop temp 0
+goto END_3
+label ELSE_3
+label END_3
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+
+function SquareGame.run 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label BEGIN_4
+push local 1
+not
+not
+if-goto END_4
+label BEGIN_5
+push local 0
+push constant 0
+eq
+not
+if-goto END_5
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto BEGIN_5
+label END_5
+push local 0
+push constant 81
+eq
+not
+if-goto ELSE_6
+push constant 1
+neg
+pop local 1
+goto END_6
+label ELSE_6
+label END_6
+push local 0
+push constant 90
+eq
+not
+if-goto ELSE_7
+push this 0
+call Square.decSize 1
+pop temp 0
+goto END_7
+label ELSE_7
+label END_7
+push local 0
+push constant 88
+eq
+not
+if-goto ELSE_8
+push this 0
+call Square.incSize 1
+pop temp 0
+goto END_8
+label ELSE_8
+label END_8
+push local 0
+push constant 131
+eq
+not
+if-goto ELSE_9
+push constant 1
+pop this 1
+goto END_9
+label ELSE_9
+label END_9
+push local 0
+push constant 133
+eq
+not
+if-goto ELSE_10
+push constant 2
+pop this 1
+goto END_10
+label ELSE_10
+label END_10
+push local 0
+push constant 130
+eq
+not
+if-goto ELSE_11
+push constant 3
+pop this 1
+goto END_11
+label ELSE_11
+label END_11
+push local 0
+push constant 132
+eq
+not
+if-goto ELSE_12
+push constant 4
+pop this 1
+goto END_12
+label ELSE_12
+label END_12
+label BEGIN_13
+push local 0
+push constant 0
+eq
+not
+not
+if-goto END_13
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto BEGIN_13
+label END_13
+goto BEGIN_4
+label END_4
+push constant 0
+return

@@ -1,0 +1,42 @@
+/** Define some constant values used in the game design. */
+class Const {
+    /** Gets the width of the boundary. */
+    function int getBoundaryWidth() {
+        return 6;
+    }
+
+    /** Gets the number of squares within a row. */
+    function int getNumSquaresPerRow() {
+        return 12;
+    }
+
+    /** Gets the left boundary of game scope. */
+    function int getLeftBoundary() {
+        var int num, x;
+        let num = Const.getNumSquaresPerRow();
+        let x = (512 - (16 * num) - 2) / 2;
+        return x + 1;    // +1 for allignment
+    }
+
+    /** Gets the right boundary of game scope. */
+    function int getRightBoundary() {
+        var int num, x;
+        let num = Const.getNumSquaresPerRow();
+        let x = Const.getLeftBoundary() + (16 * num) + 1;
+        return x;
+    }
+
+    /** Gets the downward boundary of game scope. */
+    function int getDownBoundary() {
+        var int x;
+        let x = 255 - Const.getBoundaryWidth() - 1;
+        return x;
+    }
+
+    function int getBias() {
+        var int b, width;
+        let width = Const.getBoundaryWidth();
+        let b = 256 - width - 1 - (15 * 16);
+        return b;
+    }
+}

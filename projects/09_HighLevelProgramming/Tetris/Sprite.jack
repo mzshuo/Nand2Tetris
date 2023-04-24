@@ -1,0 +1,619 @@
+/** Implements a physical Tetris piece. */
+class Sprite {
+    field int shape;            // see figure 'PieceShapeDescription.jpg'
+    field int direction;        // see figure 'PieceShapeDescription.jpg'
+    field Square square0, square1, square2, square3;    // store the four squares composing the piece.
+
+    /** Constructs a Tetris piece with the given shape. */
+    constructor Sprite new(int Ashape, int Adirection) {
+        var int mid;
+
+        let shape = Ashape;
+        let direction = Adirection;
+        let square0 = Square.new(0, 0);
+        let square1 = Square.new(0, 0);
+        let square2 = Square.new(0, 0);
+        let square3 = Square.new(0, 0);
+
+        let mid = 512 / 2 - 16;
+        do setPosition(mid, Const.getBias()-1);         // Drop a sprite with Ashape from the middle of screen.
+
+        return this;
+    }
+
+    /** Disposes this piece. */
+    method void dispose() {
+        do square0.dispose();
+        do square1.dispose();
+        do square2.dispose();
+        do square3.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Gets x1, y1, x2, y2, x3, y3 according to the shape and direction of Sprite. */
+    method Array getPosGivenDirection(int x0, int y0, int dir) {
+        var int x1, y1, x2, y2, x3, y3;
+        var Array pos;
+        let pos = Array.new(6);
+
+        if (shape = 0) {
+            let x1 = x0 + 16;
+            let y1 = y0;
+            let x2 = x0;
+            let y2 = y0 + 16;
+            let x3 = x0 + 16;
+            let y3 = y0 + 16;
+        }
+        if (shape = 1) {
+            if (dir = 1) {
+                let x1 = x0 + 16;
+                let x2 = x0 + 32;
+                let x3 = x0 + 48;
+                let y1 = y0;
+                let y2 = y0;
+                let y3 = y0;
+            }
+            if (dir = 2) {
+                let x1 = x0;
+                let x2 = x0;
+                let x3 = x0;
+                let y1 = y0 + 16;
+                let y2 = y0 + 32;
+                let y3 = y0 + 48;
+            }
+        }
+        if (shape = 2) {
+            if (dir = 1) { 
+                let x1 = x0 - 16;
+                let y1 = y0;
+                let x2 = x1;
+                let y2 = y0 + 16;
+                let x3 = x2 - 16;
+                let y3 = y2;
+            }
+            if (dir = 2) { 
+                let x1 = x0;
+                let y1 = y0 + 16;
+                let x2 = x1 + 16;
+                let y2 = y1;
+                let x3 = x2;
+                let y3 = y2 + 16;
+            }
+        }
+        if (shape = 3) {
+            if (dir = 1) { 
+                let x1 = x0 + 16;
+                let y1 = y0;
+                let x2 = x1;
+                let y2 = y1 + 16;
+                let x3 = x2 + 16;
+                let y3 = y2;
+            }
+            if (dir = 2) { 
+                let x1 = x0;
+                let y1 = y0 + 16;
+                let x2 = x1 - 16;
+                let y2 = y1;
+                let x3 = x2;
+                let y3 = y2 + 16;
+            }
+        }
+        if (shape = 4) {
+            if (dir = 1) {
+                let x1 = x0 + 16;
+                let y1 = y0;
+                let x2 = x1 + 16;
+                let y2 = y0;
+                let x3 = x1;
+                let y3 = y2 + 16;
+            }
+            if (dir = 2) {
+                let x1 = x0;
+                let y1 = y0 + 16;
+                let x2 = x1 + 16;
+                let y2 = y1;
+                let x3 = x1;
+                let y3 = y2 + 16;
+            }
+            if (dir = 3) {
+                let x1 = x0 - 16;
+                let y1 = y0 + 16;
+                let x2 = x0;
+                let y2 = y1;
+                let x3 = x2 + 16;
+                let y3 = y1;
+            }
+            if (dir = 4) {
+                let x1 = x0;
+                let y1 = y0 + 16;
+                let x2 = x0 - 16;
+                let y2 = y1;
+                let x3 = x1;
+                let y3 = y1 + 16;
+            }
+        }
+        if (shape = 5) {
+            if (dir = 1) {
+                let x1 = x0;
+                let x2 = x0;
+                let x3 = x1 + 16;
+                let y1 = y0 + 16;
+                let y2 = y1 + 16;
+                let y3 = y2;
+            }
+            if (dir = 2) {
+                let x1 = x0 - 16;
+                let x2 = x1 - 16;
+                let x3 = x2;
+                let y1 = y0;
+                let y2 = y0;
+                let y3 = y0 + 16;
+            }
+            if (dir = 3) {
+                let x1 = x0 + 16;
+                let x2 = x1;
+                let x3 = x1;
+                let y1 = y0;
+                let y2 = y1 + 16;
+                let y3 = y2 + 16;
+            }
+            if (dir = 4) {
+                let x1 = x0;
+                let x2 = x1 - 16;
+                let x3 = x2 - 16;
+                let y1 = y0 + 16;
+                let y2 = y1;
+                let y3 = y1;
+            }
+        }
+        if (shape = 6) {
+            if (dir = 1) {
+                let x1 = x0;
+                let x2 = x0;
+                let x3 = x0 - 16;
+                let y1 = y0 + 16;
+                let y2 = y1 + 16;
+                let y3 = y2;
+            }
+            if (dir = 2) {
+                let x1 = x0;
+                let x2 = x1 + 16;
+                let x3 = x2 + 16;
+                let y1 = y0 + 16;
+                let y2 = y1;
+                let y3 = y2;
+            }
+            if (dir = 3) {
+                let x1 = x0 - 16;
+                let x2 = x1;
+                let x3 = x1;
+                let y1 = y0;
+                let y2 = y1 + 16;
+                let y3 = y2 + 16;
+            }
+            if (dir = 4) {
+                let x1 = x0 + 16;
+                let x2 = x1 + 16;
+                let x3 = x2;
+                let y1 = y0;
+                let y2 = y1;
+                let y3 =  y2 + 16;
+            }
+        }
+
+        let pos[0] = x1;
+        let pos[1] = y1;
+        let pos[2] = x2;
+        let pos[3] = y2;
+        let pos[4] = x3;
+        let pos[5] = y3;
+
+        return pos;
+    }
+
+    /** Sets the position of four squares with according direction and position of squares[0]. */
+    method void setPosition(int x0, int y0) {
+        var Array pos;
+        let pos = getPosGivenDirection(x0, y0, direction);
+        
+        do square0.erase();
+        do square1.erase();
+        do square2.erase();
+        do square3.erase();
+
+        do square0.setPosition(x0, y0);
+        do square1.setPosition(pos[0], pos[1]);
+        do square2.setPosition(pos[2], pos[3]);
+        do square3.setPosition(pos[4], pos[5]);
+
+        do square0.draw();
+        do square1.draw();
+        do square2.draw();
+        do square3.draw();
+
+        return;
+    }
+
+    /** Move the piece down. */
+    method boolean moveDown() {
+        var int x0, y0, x1, y1, x2, y2, x3, y3;
+        let x0 = square0.getX();
+        let y0 = square0.getY();
+        let x1 = square1.getX();
+        let y1 = square1.getY();
+        let x2 = square2.getX();
+        let y2 = square2.getY();
+        let x3 = square3.getX();
+        let y3 = square3.getY();
+
+        /* Judge if the sprite excedes the bottom boundary. */
+        if (~inBoundary(x0, y0+16)) {return true;}
+        if (~inBoundary(x1, y1+16)) {return true;}
+        if (~inBoundary(x2, y2+16)) {return true;}
+        if (~inBoundary(x3, y3+16)) {return true;}
+
+        /* Judge if there is a collapse. */
+        if (shape = 0) {
+            if ((~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) { return true; }
+        }
+        if (shape = 1) {
+            if (direction = 1) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x1, y1+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 2) {
+                if (~isBlank(x3, y3+16)) {return true;}
+            }
+        }
+        if ((shape = 2) | (shape = 3)) {
+            if (direction = 1) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x1, y1+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+        }
+        if (shape = 4) {
+            if (direction = 1) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x1, y1+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 4) {
+                if ( (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+        }
+        if (shape = 5) {
+            if (direction = 1) {
+                if ((~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x1, y1+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x1, y1+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+        }
+        if (shape = 6) {
+            if (direction = 1) {
+                if ((~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction =  2) {
+                if ((~isBlank(x1, y1+16)) | (~isBlank(x2, y2+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0, y0+16)) | (~isBlank(x1, y1+16)) | (~isBlank(x3, y3+16))) {return true;}
+            }
+        }
+
+        /* Move down */
+        do setPosition(x0, y0+16);
+        return false;
+    }
+
+    /** Move the piece left. */
+    method void moveLeft() {
+        var int x0, y0, x1, y1, x2, y2, x3, y3;
+        let x0 = square0.getX();
+        let y0 = square0.getY();
+        let x1 = square1.getX();
+        let y1 = square1.getY();
+        let x2 = square2.getX();
+        let y2 = square2.getY();
+        let x3 = square3.getX();
+        let y3 = square3.getY();
+
+        /* Judge if the sprite excedes the left boundary. */
+        if (~inBoundary(x0-16, y0)) {return;}
+        if (~inBoundary(x1-16, y1)) {return;}
+        if (~inBoundary(x2-16, y2)) {return;}
+        if (~inBoundary(x3-16, y3)) {return;}
+
+        /* Judge if there is a collapse. */
+        if (shape = 0) {
+            if ((~isBlank(x0-16, y0)) | (~isBlank(x2-16, y2))) { return; }
+        }
+        if (shape = 1) {
+            if (direction = 1) {
+                if (~isBlank(x0-16, y0)) { return; }
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1)) | (~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+        if (shape = 2) {
+            if (direction = 1) {
+                if ((~isBlank(x1-16, y1)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+        if (shape = 3) {
+            if (direction = 1) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x2-16, y2))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+        if (shape = 4) {
+            if (direction = 1) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x3-16, y3))) { return; }
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+        if (shape = 5) {
+            if (direction = 1) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1)) | (~isBlank(x2-16, y2))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+        if (shape = 6) {
+            if (direction = 1) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction =  2) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x1-16, y1))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x1-16, y1)) | (~isBlank(x2-16, y2)) | (~isBlank(x3-16, y3))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0-16, y0)) | (~isBlank(x3-16, y3))) {return;}
+            }
+        }
+
+        /* Move left */
+        do setPosition(x0 - 16, y0);
+
+        return;
+    }
+
+    /** Move the piece right. */
+    method void moveRight() {
+        var int x0, y0, x1, y1, x2, y2, x3, y3;
+        let x0 = square0.getX();
+        let y0 = square0.getY();
+        let x1 = square1.getX();
+        let y1 = square1.getY();
+        let x2 = square2.getX();
+        let y2 = square2.getY();
+        let x3 = square3.getX();
+        let y3 = square3.getY();
+
+        /* Judge if the sprite excedes the left boundary. */
+        if (~inBoundary(x0+16, y0)) {return;}
+        if (~inBoundary(x1+16, y1)) {return;}
+        if (~inBoundary(x2+16, y2)) {return;}
+        if (~inBoundary(x3+16, y3)) {return;}
+
+        /* Judge if there is a collapse. */
+        if (shape = 0) {
+            if ((~isBlank(x1+16, y1)) | (~isBlank(x3+16, y3))) { return; }
+        }
+        if (shape = 1) {
+            if (direction = 1) {
+                if (~isBlank(x3+16, y3)) { return; }
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1)) | (~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+        }
+        if (shape = 2) {
+            if (direction = 1) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x2+16, y2))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+        }
+        if (shape = 3) {
+            if (direction = 1) {
+                if ((~isBlank(x1+16, y1)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1)) | (~isBlank(x3+16, y3))) {return;}
+            }
+        }
+        if (shape = 4) {
+            if (direction = 1) {
+                if ((~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) { return; }
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1)) | (~isBlank(x3+16, y3))) {return;}
+            }
+        }
+        if (shape = 5) {
+            if (direction = 1) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x1+16, y1)) | (~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1))) {return;}
+            }
+        }
+        if (shape = 6) {
+            if (direction = 1) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x1+16, y1)) | (~isBlank(x2+16, y2))) {return;}
+            }
+            if (direction =  2) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 3) {
+                if ((~isBlank(x0+16, y0)) | (~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+            if (direction = 4) {
+                if ((~isBlank(x2+16, y2)) | (~isBlank(x3+16, y3))) {return;}
+            }
+        }
+
+        /* Move right */
+        do setPosition(x0+16, y0);
+
+        return;
+    }
+
+    /** Changes the direction of the sprite. */
+    method void rotate() {
+        var int x0, y0;
+        var boolean canRotate;
+        var Array newPos;
+        var int newDirection;
+
+        /* Set new (x0, y0) */
+        let x0 = square0.getX();
+        let y0 = square0.getY();
+        if (shape = 1)  {
+            if (direction = 1) { let x0 = x0 + 16; let y0 = y0 - 16; }
+            if (direction = 2) { let x0 = x0 - 16; let y0 = y0 + 16; }
+        }
+        if (shape = 2) {
+            if (direction = 1) { let x0 = x0 - 16; }
+            if (direction = 2) { let x0 = x0 + 16; }
+        }
+        if (shape = 3) {
+            if (direction = 1) { let x0 = x0 + 16; }
+            if (direction = 2) { let x0 = x0 - 16; }
+        }
+        if (shape = 4) {
+            if (direction = 1) { let x0 = x0 + 16; let y0 = y0 - 16; }
+            if (direction = 4) { let x0 = x0 - 16; let y0 = y0 + 16; }
+        }
+        if (shape = 5) {
+            if (direction = 1) { let x0 = x0 + 16; let y0 = y0 + 16; }
+            if (direction = 2) { let x0 = x0 - 32; }
+            if (direction = 3) { let x0 = x0 + 16; }
+            if (direction = 4) { let x0 = x0 - 16; }
+        }
+        if (shape = 6) {
+            if ((direction = 1) | (direction = 3)) { let x0 = x0 - 16; }
+            if ((direction = 2) | (direction = 4)) { let x0 = x0 + 16; }
+        }
+
+        /* Set new direction. */
+        if ((shape = 1) | (shape = 2) | (shape = 3)) { let newDirection = 3 - direction; }     // 1->2, 2->1
+        else {
+            let newDirection = direction + 1;
+            if (newDirection = 5) { let newDirection = 1; }
+        }
+
+        /* Judge if it can be rotated */
+        let newPos = getPosGivenDirection(x0, y0, newDirection);
+        let canRotate = inBoundary(x0, y0) & inBoundary(newPos[0], newPos[1]) & inBoundary(newPos[2], newPos[3]) & inBoundary(newPos[4], newPos[5]);
+        if (~canRotate) { do Output.printString("cannot rotate"); return; }
+
+        if (shape = 1) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+        if ((shape = 2) | (shape = 3)) { 
+            if (direction = 1) { let canRotate = canRotate & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+            if (direction = 2) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[4], newPos[5]); }
+        }
+        if (shape = 4) {
+            if (direction = 1) { let canRotate = canRotate & isBlank(x0, y0); }
+            if (direction = 2) { let canRotate = canRotate & isBlank(newPos[0], newPos[1]); }
+            if (direction = 3) { let canRotate = canRotate & isBlank(newPos[4], newPos[5]); }
+            if (direction = 4) { let canRotate = canRotate & isBlank(newPos[2], newPos[3]); }
+        }
+        if (shape = 5) {
+            if ((direction = 1) | (direction = 4)) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+            if ((direction = 2) | (direction = 3)) { let canRotate = canRotate & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+        }
+        if (shape = 6) {
+            if (direction = 1) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[0], newPos[1]) & isBlank(newPos[4], newPos[5]);}
+            if (direction = 2) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[4], newPos[5]);  }
+            if (direction = 3) { let canRotate = canRotate & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+            if (direction = 4) { let canRotate = canRotate & isBlank(newPos[0], newPos[1]) & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
+        }
+
+        if (canRotate) { 
+            let direction = newDirection;
+            do setPosition(x0, y0); 
+        }
+
+        return;
+    }
+
+    /** Judge if these hasn't been a square in the position of pos. */
+    method boolean isBlank(int x, int y) {
+        var int location, memAddress;
+        let location = ((y+14) * 32) + ((x+8) / 16);
+        let memAddress = 16384 + location;
+        return Memory.peek(memAddress) = 0;
+    }
+
+    /** Judge if the square is within the boundary. */
+    method boolean inBoundary(int x, int y) {
+        if (x < Const.getLeftBoundary()) { return false;}
+        if (x + 2 > Const.getRightBoundary()) { return false;}
+        if (y < 0) { return false; }
+        if (y > (Const.getDownBoundary() - 16)) { return false; }
+        return true;
+    }
+
+    method int smallestY() {
+        var int y;
+        let y = 255;
+        if (square0.getY() < y) { let y = square0.getY(); }
+        if (square1.getY() < y) { let y = square1.getY(); }
+        if (square2.getY() < y) { let y = square2.getY(); }
+        if (square3.getY() < y) { let y = square3.getY(); }
+        return y;
+    }
+}

@@ -1,0 +1,3806 @@
+function Sprite.new 1
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push constant 0
+push constant 0
+call Square.new 2
+pop this 2
+push constant 0
+push constant 0
+call Square.new 2
+pop this 3
+push constant 0
+push constant 0
+call Square.new 2
+pop this 4
+push constant 0
+push constant 0
+call Square.new 2
+pop this 5
+push constant 512
+push constant 2
+call Math.divide 2
+push constant 16
+sub
+pop local 0
+push pointer 0
+push local 0
+call Const.getBias 0
+push constant 1
+sub
+call Sprite.setPosition 3
+pop temp 0
+push pointer 0
+return
+function Sprite.dispose 0
+push argument 0
+pop pointer 0
+push this 2
+call Square.dispose 1
+pop temp 0
+push this 3
+call Square.dispose 1
+pop temp 0
+push this 4
+call Square.dispose 1
+pop temp 0
+push this 5
+call Square.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Sprite.getPosGivenDirection 7
+push argument 0
+pop pointer 0
+push constant 6
+call Array.new 1
+pop local 6
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push constant 16
+add
+pop local 0
+push argument 2
+pop local 1
+push argument 1
+pop local 2
+push argument 2
+push constant 16
+add
+pop local 3
+push argument 1
+push constant 16
+add
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 5
+label IF_FALSE0
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push argument 1
+push constant 16
+add
+pop local 0
+push argument 1
+push constant 32
+add
+pop local 2
+push argument 1
+push constant 48
+add
+pop local 4
+push argument 2
+pop local 1
+push argument 2
+pop local 3
+push argument 2
+pop local 5
+label IF_FALSE2
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push argument 1
+pop local 0
+push argument 1
+pop local 2
+push argument 1
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 1
+push argument 2
+push constant 32
+add
+pop local 3
+push argument 2
+push constant 48
+add
+pop local 5
+label IF_FALSE3
+label IF_FALSE1
+push this 0
+push constant 2
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push argument 1
+push constant 16
+sub
+pop local 0
+push argument 2
+pop local 1
+push local 0
+pop local 2
+push argument 2
+push constant 16
+add
+pop local 3
+push local 2
+push constant 16
+sub
+pop local 4
+push local 3
+pop local 5
+label IF_FALSE5
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push argument 1
+pop local 0
+push argument 2
+push constant 16
+add
+pop local 1
+push local 0
+push constant 16
+add
+pop local 2
+push local 1
+pop local 3
+push local 2
+pop local 4
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE6
+label IF_FALSE4
+push this 0
+push constant 3
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push argument 1
+push constant 16
+add
+pop local 0
+push argument 2
+pop local 1
+push local 0
+pop local 2
+push local 1
+push constant 16
+add
+pop local 3
+push local 2
+push constant 16
+add
+pop local 4
+push local 3
+pop local 5
+label IF_FALSE8
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push argument 1
+pop local 0
+push argument 2
+push constant 16
+add
+pop local 1
+push local 0
+push constant 16
+sub
+pop local 2
+push local 1
+pop local 3
+push local 2
+pop local 4
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE9
+label IF_FALSE7
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push argument 1
+push constant 16
+add
+pop local 0
+push argument 2
+pop local 1
+push local 0
+push constant 16
+add
+pop local 2
+push argument 2
+pop local 3
+push local 0
+pop local 4
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE11
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push argument 1
+pop local 0
+push argument 2
+push constant 16
+add
+pop local 1
+push local 0
+push constant 16
+add
+pop local 2
+push local 1
+pop local 3
+push local 0
+pop local 4
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE12
+push argument 3
+push constant 3
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push argument 1
+push constant 16
+sub
+pop local 0
+push argument 2
+push constant 16
+add
+pop local 1
+push argument 1
+pop local 2
+push local 1
+pop local 3
+push local 2
+push constant 16
+add
+pop local 4
+push local 1
+pop local 5
+label IF_FALSE13
+push argument 3
+push constant 4
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push argument 1
+pop local 0
+push argument 2
+push constant 16
+add
+pop local 1
+push argument 1
+push constant 16
+sub
+pop local 2
+push local 1
+pop local 3
+push local 0
+pop local 4
+push local 1
+push constant 16
+add
+pop local 5
+label IF_FALSE14
+label IF_FALSE10
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push argument 1
+pop local 0
+push argument 1
+pop local 2
+push local 0
+push constant 16
+add
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 1
+push local 1
+push constant 16
+add
+pop local 3
+push local 3
+pop local 5
+label IF_FALSE16
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push argument 1
+push constant 16
+sub
+pop local 0
+push local 0
+push constant 16
+sub
+pop local 2
+push local 2
+pop local 4
+push argument 2
+pop local 1
+push argument 2
+pop local 3
+push argument 2
+push constant 16
+add
+pop local 5
+label IF_FALSE17
+push argument 3
+push constant 3
+eq
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push argument 1
+push constant 16
+add
+pop local 0
+push local 0
+pop local 2
+push local 0
+pop local 4
+push argument 2
+pop local 1
+push local 1
+push constant 16
+add
+pop local 3
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE18
+push argument 3
+push constant 4
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push argument 1
+pop local 0
+push local 0
+push constant 16
+sub
+pop local 2
+push local 2
+push constant 16
+sub
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 1
+push local 1
+pop local 3
+push local 1
+pop local 5
+label IF_FALSE19
+label IF_FALSE15
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push argument 3
+push constant 1
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push argument 1
+pop local 0
+push argument 1
+pop local 2
+push argument 1
+push constant 16
+sub
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 1
+push local 1
+push constant 16
+add
+pop local 3
+push local 3
+pop local 5
+label IF_FALSE21
+push argument 3
+push constant 2
+eq
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push argument 1
+pop local 0
+push local 0
+push constant 16
+add
+pop local 2
+push local 2
+push constant 16
+add
+pop local 4
+push argument 2
+push constant 16
+add
+pop local 1
+push local 1
+pop local 3
+push local 3
+pop local 5
+label IF_FALSE22
+push argument 3
+push constant 3
+eq
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push argument 1
+push constant 16
+sub
+pop local 0
+push local 0
+pop local 2
+push local 0
+pop local 4
+push argument 2
+pop local 1
+push local 1
+push constant 16
+add
+pop local 3
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE23
+push argument 3
+push constant 4
+eq
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push argument 1
+push constant 16
+add
+pop local 0
+push local 0
+push constant 16
+add
+pop local 2
+push local 2
+pop local 4
+push argument 2
+pop local 1
+push local 1
+pop local 3
+push local 3
+push constant 16
+add
+pop local 5
+label IF_FALSE24
+label IF_FALSE20
+push constant 0
+push local 6
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 6
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 6
+add
+push local 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 6
+add
+push local 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 6
+add
+push local 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 6
+add
+push local 5
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 6
+return
+function Sprite.setPosition 1
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 1
+push argument 2
+push this 1
+call Sprite.getPosGivenDirection 4
+pop local 0
+push this 2
+call Square.erase 1
+pop temp 0
+push this 3
+call Square.erase 1
+pop temp 0
+push this 4
+call Square.erase 1
+pop temp 0
+push this 5
+call Square.erase 1
+pop temp 0
+push this 2
+push argument 1
+push argument 2
+call Square.setPosition 3
+pop temp 0
+push this 3
+push constant 0
+push local 0
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 0
+add
+pop pointer 1
+push that 0
+call Square.setPosition 3
+pop temp 0
+push this 4
+push constant 2
+push local 0
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 0
+add
+pop pointer 1
+push that 0
+call Square.setPosition 3
+pop temp 0
+push this 5
+push constant 4
+push local 0
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 0
+add
+pop pointer 1
+push that 0
+call Square.setPosition 3
+pop temp 0
+push this 2
+call Square.draw 1
+pop temp 0
+push this 3
+call Square.draw 1
+pop temp 0
+push this 4
+call Square.draw 1
+pop temp 0
+push this 5
+call Square.draw 1
+pop temp 0
+push constant 0
+return
+function Sprite.moveDown 8
+push argument 0
+pop pointer 0
+push this 2
+call Square.getX 1
+pop local 0
+push this 2
+call Square.getY 1
+pop local 1
+push this 3
+call Square.getX 1
+pop local 2
+push this 3
+call Square.getY 1
+pop local 3
+push this 4
+call Square.getX 1
+pop local 4
+push this 4
+call Square.getY 1
+pop local 5
+push this 5
+call Square.getX 1
+pop local 6
+push this 5
+call Square.getY 1
+pop local 7
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+return
+label IF_FALSE0
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+return
+label IF_FALSE1
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+not
+return
+label IF_FALSE2
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+not
+return
+label IF_FALSE3
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+not
+return
+label IF_FALSE5
+label IF_FALSE4
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+not
+return
+label IF_FALSE8
+label IF_FALSE7
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+not
+return
+label IF_FALSE10
+label IF_FALSE9
+label IF_FALSE6
+push this 0
+push constant 2
+eq
+push this 0
+push constant 3
+eq
+or
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 0
+not
+return
+label IF_FALSE13
+label IF_FALSE12
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 0
+not
+return
+label IF_FALSE15
+label IF_FALSE14
+label IF_FALSE11
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push constant 0
+not
+return
+label IF_FALSE18
+label IF_FALSE17
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push constant 0
+not
+return
+label IF_FALSE20
+label IF_FALSE19
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push constant 0
+not
+return
+label IF_FALSE22
+label IF_FALSE21
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push constant 0
+not
+return
+label IF_FALSE24
+label IF_FALSE23
+label IF_FALSE16
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push constant 0
+not
+return
+label IF_FALSE27
+label IF_FALSE26
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
+push constant 0
+not
+return
+label IF_FALSE29
+label IF_FALSE28
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
+push constant 0
+not
+return
+label IF_FALSE31
+label IF_FALSE30
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push constant 0
+not
+return
+label IF_FALSE33
+label IF_FALSE32
+label IF_FALSE25
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE34
+goto IF_FALSE34
+label IF_TRUE34
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE35
+goto IF_FALSE35
+label IF_TRUE35
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
+push constant 0
+not
+return
+label IF_FALSE36
+label IF_FALSE35
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push local 5
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE38
+goto IF_FALSE38
+label IF_TRUE38
+push constant 0
+not
+return
+label IF_FALSE38
+label IF_FALSE37
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE39
+goto IF_FALSE39
+label IF_TRUE39
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE40
+goto IF_FALSE40
+label IF_TRUE40
+push constant 0
+not
+return
+label IF_FALSE40
+label IF_FALSE39
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE41
+goto IF_FALSE41
+label IF_TRUE41
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push local 3
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push local 7
+push constant 16
+add
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE42
+goto IF_FALSE42
+label IF_TRUE42
+push constant 0
+not
+return
+label IF_FALSE42
+label IF_FALSE41
+label IF_FALSE34
+push pointer 0
+push local 0
+push local 1
+push constant 16
+add
+call Sprite.setPosition 3
+pop temp 0
+push constant 0
+return
+function Sprite.moveLeft 8
+push argument 0
+pop pointer 0
+push this 2
+call Square.getX 1
+pop local 0
+push this 2
+call Square.getY 1
+pop local 1
+push this 3
+call Square.getX 1
+pop local 2
+push this 3
+call Square.getY 1
+pop local 3
+push this 4
+call Square.getX 1
+pop local 4
+push this 4
+call Square.getY 1
+pop local 5
+push this 5
+call Square.getX 1
+pop local 6
+push this 5
+call Square.getY 1
+pop local 7
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+return
+label IF_FALSE2
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+return
+label IF_FALSE3
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+return
+label IF_FALSE5
+label IF_FALSE4
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+return
+label IF_FALSE8
+label IF_FALSE7
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+return
+label IF_FALSE10
+label IF_FALSE9
+label IF_FALSE6
+push this 0
+push constant 2
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 0
+return
+label IF_FALSE13
+label IF_FALSE12
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 0
+return
+label IF_FALSE15
+label IF_FALSE14
+label IF_FALSE11
+push this 0
+push constant 3
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push constant 0
+return
+label IF_FALSE18
+label IF_FALSE17
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push constant 0
+return
+label IF_FALSE20
+label IF_FALSE19
+label IF_FALSE16
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push constant 0
+return
+label IF_FALSE23
+label IF_FALSE22
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push constant 0
+return
+label IF_FALSE25
+label IF_FALSE24
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push constant 0
+return
+label IF_FALSE27
+label IF_FALSE26
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
+push constant 0
+return
+label IF_FALSE29
+label IF_FALSE28
+label IF_FALSE21
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
+push constant 0
+return
+label IF_FALSE32
+label IF_FALSE31
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE34
+goto IF_FALSE34
+label IF_TRUE34
+push constant 0
+return
+label IF_FALSE34
+label IF_FALSE33
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE35
+goto IF_FALSE35
+label IF_TRUE35
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
+push constant 0
+return
+label IF_FALSE36
+label IF_FALSE35
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE38
+goto IF_FALSE38
+label IF_TRUE38
+push constant 0
+return
+label IF_FALSE38
+label IF_FALSE37
+label IF_FALSE30
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE39
+goto IF_FALSE39
+label IF_TRUE39
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE40
+goto IF_FALSE40
+label IF_TRUE40
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE41
+goto IF_FALSE41
+label IF_TRUE41
+push constant 0
+return
+label IF_FALSE41
+label IF_FALSE40
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE42
+goto IF_FALSE42
+label IF_TRUE42
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE43
+goto IF_FALSE43
+label IF_TRUE43
+push constant 0
+return
+label IF_FALSE43
+label IF_FALSE42
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE44
+goto IF_FALSE44
+label IF_TRUE44
+push pointer 0
+push local 2
+push constant 16
+sub
+push local 3
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+sub
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE45
+goto IF_FALSE45
+label IF_TRUE45
+push constant 0
+return
+label IF_FALSE45
+label IF_FALSE44
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE46
+goto IF_FALSE46
+label IF_TRUE46
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+sub
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE47
+goto IF_FALSE47
+label IF_TRUE47
+push constant 0
+return
+label IF_FALSE47
+label IF_FALSE46
+label IF_FALSE39
+push pointer 0
+push local 0
+push constant 16
+sub
+push local 1
+call Sprite.setPosition 3
+pop temp 0
+push constant 0
+return
+function Sprite.moveRight 8
+push argument 0
+pop pointer 0
+push this 2
+call Square.getX 1
+pop local 0
+push this 2
+call Square.getY 1
+pop local 1
+push this 3
+call Square.getX 1
+pop local 2
+push this 3
+call Square.getY 1
+pop local 3
+push this 4
+call Square.getX 1
+pop local 4
+push this 4
+call Square.getY 1
+pop local 5
+push this 5
+call Square.getX 1
+pop local 6
+push this 5
+call Square.getY 1
+pop local 7
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+return
+label IF_FALSE2
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.inBoundary 3
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+return
+label IF_FALSE3
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+return
+label IF_FALSE5
+label IF_FALSE4
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+return
+label IF_FALSE8
+label IF_FALSE7
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+return
+label IF_FALSE10
+label IF_FALSE9
+label IF_FALSE6
+push this 0
+push constant 2
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 0
+return
+label IF_FALSE13
+label IF_FALSE12
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 0
+return
+label IF_FALSE15
+label IF_FALSE14
+label IF_FALSE11
+push this 0
+push constant 3
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push constant 0
+return
+label IF_FALSE18
+label IF_FALSE17
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push constant 0
+return
+label IF_FALSE20
+label IF_FALSE19
+label IF_FALSE16
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push constant 0
+return
+label IF_FALSE23
+label IF_FALSE22
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push constant 0
+return
+label IF_FALSE25
+label IF_FALSE24
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push constant 0
+return
+label IF_FALSE27
+label IF_FALSE26
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
+push constant 0
+return
+label IF_FALSE29
+label IF_FALSE28
+label IF_FALSE21
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
+push constant 0
+return
+label IF_FALSE32
+label IF_FALSE31
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE34
+goto IF_FALSE34
+label IF_TRUE34
+push constant 0
+return
+label IF_FALSE34
+label IF_FALSE33
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE35
+goto IF_FALSE35
+label IF_TRUE35
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
+push constant 0
+return
+label IF_FALSE36
+label IF_FALSE35
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE38
+goto IF_FALSE38
+label IF_TRUE38
+push constant 0
+return
+label IF_FALSE38
+label IF_FALSE37
+label IF_FALSE30
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE39
+goto IF_FALSE39
+label IF_TRUE39
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE40
+goto IF_FALSE40
+label IF_TRUE40
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 2
+push constant 16
+add
+push local 3
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE41
+goto IF_FALSE41
+label IF_TRUE41
+push constant 0
+return
+label IF_FALSE41
+label IF_FALSE40
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE42
+goto IF_FALSE42
+label IF_TRUE42
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE43
+goto IF_FALSE43
+label IF_TRUE43
+push constant 0
+return
+label IF_FALSE43
+label IF_FALSE42
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE44
+goto IF_FALSE44
+label IF_TRUE44
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+or
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE45
+goto IF_FALSE45
+label IF_TRUE45
+push constant 0
+return
+label IF_FALSE45
+label IF_FALSE44
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE46
+goto IF_FALSE46
+label IF_TRUE46
+push pointer 0
+push local 4
+push constant 16
+add
+push local 5
+call Sprite.isBlank 3
+not
+push pointer 0
+push local 6
+push constant 16
+add
+push local 7
+call Sprite.isBlank 3
+not
+or
+if-goto IF_TRUE47
+goto IF_FALSE47
+label IF_TRUE47
+push constant 0
+return
+label IF_FALSE47
+label IF_FALSE46
+label IF_FALSE39
+push pointer 0
+push local 0
+push constant 16
+add
+push local 1
+call Sprite.setPosition 3
+pop temp 0
+push constant 0
+return
+function Sprite.rotate 5
+push argument 0
+pop pointer 0
+push this 2
+call Square.getX 1
+pop local 0
+push this 2
+call Square.getY 1
+pop local 1
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 16
+add
+pop local 0
+push local 1
+push constant 16
+sub
+pop local 1
+label IF_FALSE1
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push constant 16
+sub
+pop local 0
+push local 1
+push constant 16
+add
+pop local 1
+label IF_FALSE2
+label IF_FALSE0
+push this 0
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
+push constant 16
+sub
+pop local 0
+label IF_FALSE4
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 0
+push constant 16
+add
+pop local 0
+label IF_FALSE5
+label IF_FALSE3
+push this 0
+push constant 3
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push local 0
+push constant 16
+add
+pop local 0
+label IF_FALSE7
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push local 0
+push constant 16
+sub
+pop local 0
+label IF_FALSE8
+label IF_FALSE6
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push local 0
+push constant 16
+add
+pop local 0
+push local 1
+push constant 16
+sub
+pop local 1
+label IF_FALSE10
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push local 0
+push constant 16
+sub
+pop local 0
+push local 1
+push constant 16
+add
+pop local 1
+label IF_FALSE11
+label IF_FALSE9
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push local 0
+push constant 16
+add
+pop local 0
+push local 1
+push constant 16
+add
+pop local 1
+label IF_FALSE13
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push local 0
+push constant 32
+sub
+pop local 0
+label IF_FALSE14
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push local 0
+push constant 16
+add
+pop local 0
+label IF_FALSE15
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push local 0
+push constant 16
+sub
+pop local 0
+label IF_FALSE16
+label IF_FALSE12
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push this 1
+push constant 1
+eq
+push this 1
+push constant 3
+eq
+or
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push local 0
+push constant 16
+sub
+pop local 0
+label IF_FALSE18
+push this 1
+push constant 2
+eq
+push this 1
+push constant 4
+eq
+or
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push local 0
+push constant 16
+add
+pop local 0
+label IF_FALSE19
+label IF_FALSE17
+push this 0
+push constant 1
+eq
+push this 0
+push constant 2
+eq
+or
+push this 0
+push constant 3
+eq
+or
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push constant 3
+push this 1
+sub
+pop local 4
+goto IF_END20
+label IF_FALSE20
+push this 1
+push constant 1
+add
+pop local 4
+push local 4
+push constant 5
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push constant 1
+pop local 4
+label IF_FALSE21
+label IF_END20
+push pointer 0
+push local 0
+push local 1
+push local 4
+call Sprite.getPosGivenDirection 4
+pop local 3
+push pointer 0
+push local 0
+push local 1
+call Sprite.inBoundary 3
+push pointer 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.inBoundary 3
+and
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.inBoundary 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.inBoundary 3
+and
+pop local 2
+push local 2
+not
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push constant 13
+call String.new 1
+push constant 99
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE22
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE23
+push this 0
+push constant 2
+eq
+push this 0
+push constant 3
+eq
+or
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push local 2
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE25
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE26
+label IF_FALSE24
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE28
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
+push local 2
+push pointer 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE29
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
+push local 2
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE30
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
+push local 2
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE31
+label IF_FALSE27
+push this 0
+push constant 5
+eq
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
+push this 1
+push constant 1
+eq
+push this 1
+push constant 4
+eq
+or
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE33
+push this 1
+push constant 2
+eq
+push this 1
+push constant 3
+eq
+or
+if-goto IF_TRUE34
+goto IF_FALSE34
+label IF_TRUE34
+push local 2
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE34
+label IF_FALSE32
+push this 0
+push constant 6
+eq
+if-goto IF_TRUE35
+goto IF_FALSE35
+label IF_TRUE35
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE36
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push local 2
+push pointer 0
+push local 0
+push local 1
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE37
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE38
+goto IF_FALSE38
+label IF_TRUE38
+push local 2
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE38
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE39
+goto IF_FALSE39
+label IF_TRUE39
+push local 2
+push pointer 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE39
+label IF_FALSE35
+push local 2
+if-goto IF_TRUE40
+goto IF_FALSE40
+label IF_TRUE40
+push local 4
+pop this 1
+push pointer 0
+push local 0
+push local 1
+call Sprite.setPosition 3
+pop temp 0
+label IF_FALSE40
+push constant 0
+return
+function Sprite.isBlank 2
+push argument 0
+pop pointer 0
+push argument 2
+push constant 14
+add
+push constant 32
+call Math.multiply 2
+push argument 1
+push constant 8
+add
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push constant 16384
+push local 0
+add
+pop local 1
+push local 1
+call Memory.peek 1
+push constant 0
+eq
+return
+function Sprite.inBoundary 0
+push argument 0
+pop pointer 0
+push argument 1
+call Const.getLeftBoundary 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 1
+push constant 2
+add
+call Const.getRightBoundary 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push argument 2
+push constant 0
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+return
+label IF_FALSE2
+push argument 2
+call Const.getDownBoundary 0
+push constant 16
+sub
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+return
+label IF_FALSE3
+push constant 0
+not
+return
+function Sprite.smallestY 1
+push argument 0
+pop pointer 0
+push constant 255
+pop local 0
+push this 2
+call Square.getY 1
+push local 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+call Square.getY 1
+pop local 0
+label IF_FALSE0
+push this 3
+call Square.getY 1
+push local 0
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 3
+call Square.getY 1
+pop local 0
+label IF_FALSE1
+push this 4
+call Square.getY 1
+push local 0
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 4
+call Square.getY 1
+pop local 0
+label IF_FALSE2
+push this 5
+call Square.getY 1
+push local 0
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 5
+call Square.getY 1
+pop local 0
+label IF_FALSE3
+push local 0
+return

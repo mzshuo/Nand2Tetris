@@ -1,0 +1,109 @@
+function Boundary.draw 3
+call Const.getBoundaryWidth 0
+pop local 0
+call Const.getNumSquaresPerRow 0
+pop local 1
+push constant 512
+push constant 16
+push local 1
+call Math.multiply 2
+sub
+push constant 2
+sub
+push constant 2
+call Math.divide 2
+push local 0
+sub
+push constant 1
+sub
+pop local 2
+push local 2
+push local 0
+push local 1
+call Boundary.drawDown 3
+pop temp 0
+push local 2
+push local 0
+call Boundary.drawLeft 2
+pop temp 0
+push local 2
+push local 0
+add
+push constant 2
+add
+push constant 16
+push local 1
+call Math.multiply 2
+add
+push constant 1
+add
+push local 0
+call Boundary.drawRight 2
+pop temp 0
+push constant 0
+return
+function Boundary.drawDown 2
+push constant 256
+push argument 1
+sub
+push constant 1
+sub
+pop local 0
+push constant 2
+push argument 1
+call Math.multiply 2
+push constant 16
+push argument 2
+call Math.multiply 2
+add
+push constant 2
+add
+pop local 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push local 0
+push argument 0
+push local 1
+add
+push local 0
+push argument 1
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Boundary.drawLeft 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 0
+push argument 0
+push argument 1
+add
+push constant 255
+push argument 1
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Boundary.drawRight 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 0
+push argument 0
+push argument 1
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

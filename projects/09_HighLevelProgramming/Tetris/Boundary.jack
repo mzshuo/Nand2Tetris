@@ -1,0 +1,39 @@
+class Boundary {
+    /** Draws the boundary of Tetris game. */
+    function void draw() {
+        var int width, num, x;
+        let width = Const.getBoundaryWidth();
+        let num = Const.getNumSquaresPerRow();
+        let x = (512 - (16 * num) - 2) / 2 - width - 1;
+
+        do Boundary.drawDown(x, width, num);
+        do Boundary.drawLeft(x, width);
+        do Boundary.drawRight(x + width + 2 + (16 * num) + 1, width);
+        return;
+    }
+
+    /** Draws the downward boundary. */
+    function void drawDown(int x, int width, int num) {
+        var int y, length;
+        let y = 256 - width - 1;
+        let length = (2 * width) + (16 * num) + 2;
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + length, y + width);
+        return;
+    }
+
+    /** Draws the left boundary. */
+    function void drawLeft(int x, int width) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, 0, x+width, 255-width);
+        return;
+    }
+
+    /** Draws the right boundary. */
+    function void drawRight(int x, int width) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, 0, x+width, 255);
+        return;
+    }
+}
