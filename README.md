@@ -25,9 +25,8 @@
 
 
 ### Project Demonstration
-<video id="video" controls="" preload="none" poster="封面">
-      <source id="mp4" src="images/demo.mp4" type="video/mp4">
-</videos>
+https://github.com/mzshuo/Nand2Tetris/blob/master/images/demo.mp4
+
 
 ### Project Info
 
