@@ -558,7 +558,7 @@ class Sprite {
         /* Judge if it can be rotated */
         let newPos = getPosGivenDirection(x0, y0, newDirection);
         let canRotate = inBoundary(x0, y0) & inBoundary(newPos[0], newPos[1]) & inBoundary(newPos[2], newPos[3]) & inBoundary(newPos[4], newPos[5]);
-        if (~canRotate) { do Output.printString("cannot rotate"); return; }
+        // if (~canRotate) { do Output.printString("cannot rotate"); return; }
 
         if (shape = 1) { let canRotate = canRotate & isBlank(x0, y0) & isBlank(newPos[2], newPos[3]) & isBlank(newPos[4], newPos[5]); }
         if ((shape = 2) | (shape = 3)) { 

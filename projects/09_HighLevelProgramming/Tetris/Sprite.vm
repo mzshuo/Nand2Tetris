@@ -3184,50 +3184,12 @@ push that 0
 call Sprite.inBoundary 3
 and
 pop local 2
-push local 2
-not
-if-goto IF_TRUE22
-goto IF_FALSE22
-label IF_TRUE22
-push constant 13
-call String.new 1
-push constant 99
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 110
-call String.appendChar 2
-push constant 110
-call String.appendChar 2
-push constant 111
-call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
-push constant 114
-call String.appendChar 2
-push constant 111
-call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 101
-call String.appendChar 2
-call Output.printString 1
-pop temp 0
-push constant 0
-return
-label IF_FALSE22
 push this 0
 push constant 1
 eq
-if-goto IF_TRUE23
-goto IF_FALSE23
-label IF_TRUE23
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
 push local 2
 push pointer 0
 push local 0
@@ -3261,7 +3223,7 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE23
+label IF_FALSE22
 push this 0
 push constant 2
 eq
@@ -3269,15 +3231,15 @@ push this 0
 push constant 3
 eq
 or
-if-goto IF_TRUE24
-goto IF_FALSE24
-label IF_TRUE24
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
 push this 1
 push constant 1
 eq
-if-goto IF_TRUE25
-goto IF_FALSE25
-label IF_TRUE25
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
 push local 2
 push pointer 0
 push constant 2
@@ -3290,6 +3252,33 @@ push local 3
 add
 pop pointer 1
 push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE24
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push local 2
+push pointer 0
+push local 0
+push local 1
 call Sprite.isBlank 3
 and
 push pointer 0
@@ -3307,46 +3296,19 @@ call Sprite.isBlank 3
 and
 pop local 2
 label IF_FALSE25
-push this 1
-push constant 2
+label IF_FALSE23
+push this 0
+push constant 4
 eq
 if-goto IF_TRUE26
 goto IF_FALSE26
 label IF_TRUE26
-push local 2
-push pointer 0
-push local 0
-push local 1
-call Sprite.isBlank 3
-and
-push pointer 0
-push constant 4
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 5
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-pop local 2
-label IF_FALSE26
-label IF_FALSE24
-push this 0
-push constant 4
+push this 1
+push constant 1
 eq
 if-goto IF_TRUE27
 goto IF_FALSE27
 label IF_TRUE27
-push this 1
-push constant 1
-eq
-if-goto IF_TRUE28
-goto IF_FALSE28
-label IF_TRUE28
 push local 2
 push pointer 0
 push local 0
@@ -3354,13 +3316,13 @@ push local 1
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE28
+label IF_FALSE27
 push this 1
 push constant 2
 eq
-if-goto IF_TRUE29
-goto IF_FALSE29
-label IF_TRUE29
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
 push local 2
 push pointer 0
 push constant 0
@@ -3376,13 +3338,13 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE29
+label IF_FALSE28
 push this 1
 push constant 3
 eq
-if-goto IF_TRUE30
-goto IF_FALSE30
-label IF_TRUE30
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
 push local 2
 push pointer 0
 push constant 4
@@ -3398,13 +3360,13 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE30
+label IF_FALSE29
 push this 1
 push constant 4
 eq
-if-goto IF_TRUE31
-goto IF_FALSE31
-label IF_TRUE31
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
 push local 2
 push pointer 0
 push constant 2
@@ -3420,14 +3382,14 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE31
-label IF_FALSE27
+label IF_FALSE30
+label IF_FALSE26
 push this 0
 push constant 5
 eq
-if-goto IF_TRUE32
-goto IF_FALSE32
-label IF_TRUE32
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
 push this 1
 push constant 1
 eq
@@ -3435,15 +3397,54 @@ push this 1
 push constant 4
 eq
 or
-if-goto IF_TRUE33
-goto IF_FALSE33
-label IF_TRUE33
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
 push local 2
 push pointer 0
 push local 0
 push local 1
 call Sprite.isBlank 3
 and
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE32
+push this 1
+push constant 2
+eq
+push this 1
+push constant 3
+eq
+or
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push local 2
 push pointer 0
 push constant 2
 push local 3
@@ -3472,58 +3473,19 @@ call Sprite.isBlank 3
 and
 pop local 2
 label IF_FALSE33
-push this 1
-push constant 2
+label IF_FALSE31
+push this 0
+push constant 6
 eq
-push this 1
-push constant 3
-eq
-or
 if-goto IF_TRUE34
 goto IF_FALSE34
 label IF_TRUE34
-push local 2
-push pointer 0
-push constant 2
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 3
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-push pointer 0
-push constant 4
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 5
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-pop local 2
-label IF_FALSE34
-label IF_FALSE32
-push this 0
-push constant 6
+push this 1
+push constant 1
 eq
 if-goto IF_TRUE35
 goto IF_FALSE35
 label IF_TRUE35
-push this 1
-push constant 1
-eq
-if-goto IF_TRUE36
-goto IF_FALSE36
-label IF_TRUE36
 push local 2
 push pointer 0
 push local 0
@@ -3557,13 +3519,13 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE36
+label IF_FALSE35
 push this 1
 push constant 2
 eq
-if-goto IF_TRUE37
-goto IF_FALSE37
-label IF_TRUE37
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
 push local 2
 push pointer 0
 push local 0
@@ -3584,14 +3546,62 @@ push that 0
 call Sprite.isBlank 3
 and
 pop local 2
-label IF_FALSE37
+label IF_FALSE36
 push this 1
 push constant 3
+eq
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push local 2
+push pointer 0
+push constant 2
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 3
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+push pointer 0
+push constant 4
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 5
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
+pop local 2
+label IF_FALSE37
+push this 1
+push constant 4
 eq
 if-goto IF_TRUE38
 goto IF_FALSE38
 label IF_TRUE38
 push local 2
+push pointer 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+call Sprite.isBlank 3
+and
 push pointer 0
 push constant 2
 push local 3
@@ -3620,59 +3630,11 @@ call Sprite.isBlank 3
 and
 pop local 2
 label IF_FALSE38
-push this 1
-push constant 4
-eq
+label IF_FALSE34
+push local 2
 if-goto IF_TRUE39
 goto IF_FALSE39
 label IF_TRUE39
-push local 2
-push pointer 0
-push constant 0
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 1
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-push pointer 0
-push constant 2
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 3
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-push pointer 0
-push constant 4
-push local 3
-add
-pop pointer 1
-push that 0
-push constant 5
-push local 3
-add
-pop pointer 1
-push that 0
-call Sprite.isBlank 3
-and
-pop local 2
-label IF_FALSE39
-label IF_FALSE35
-push local 2
-if-goto IF_TRUE40
-goto IF_FALSE40
-label IF_TRUE40
 push local 4
 pop this 1
 push pointer 0
@@ -3680,7 +3642,7 @@ push local 0
 push local 1
 call Sprite.setPosition 3
 pop temp 0
-label IF_FALSE40
+label IF_FALSE39
 push constant 0
 return
 function Sprite.isBlank 2

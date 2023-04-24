@@ -69,7 +69,7 @@ class TetrisGame {
             /* Arrived at the bottom */
             let upY = currSprite.smallestY();
             do currSprite.dispose();
-            if (upY < (Const.getBias() + 16 * 3)) {
+            if (upY < (Const.getBias() + (16 * 3))) {
                 do endGame();
                 let exit = true;
             }
@@ -88,7 +88,7 @@ class TetrisGame {
                 }
                 /* Eliminate a line. */
                 if (full) {
-                    if (row = 14) {do endGame(); let exit = true; }
+                    if (row = 14) { do endGame(); let exit = true; }
                     else {
                         let row2 = row;
                         let white = false;

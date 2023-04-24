@@ -170,9 +170,9 @@ pop temp 0
 push local 4
 call Const.getBias 0
 push constant 16
-add
 push constant 3
 call Math.multiply 2
+add
 lt
 if-goto IF_TRUE6
 goto IF_FALSE6
