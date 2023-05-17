@@ -1,6 +1,6 @@
 # Nand2Tetris
 
-- my implementation for complete projects
+- my implementation of the projects
 - introduction to the course and each project (all pictures below are from course slides)
 
 
